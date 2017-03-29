@@ -23,8 +23,8 @@ API_Controller.prototype.sendEmail    = function (request, response) {
         }, function(err, html){
 
             var from_email  = new emailHelper.Email("reserve@ticket");
-            var to_email    = new emailHelper.Email("b.gegham@gmail.com");
-            var subject     = "Ticket reserveation";
+            var to_email    = new emailHelper.Email(config.EMAIL_FROM);
+            var subject     = "Ticket reservation";
             var content     = new emailHelper.Content('text/html', html);
             var mail        = new emailHelper.Mail(from_email, subject, to_email, content);
             var sg          = require('sendgrid')(config.SENDGRID_API_KEY);

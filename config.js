@@ -1,10 +1,10 @@
 module.exports = {
     development: {
-        baseUrl : "https://dev.hifilmapp.com:8088/",
+        baseUrl : "http://188.166.91.222:8088/",
         secret: 'c6ddbf5047efc9s4e0d8ff9a8cf4b5acb92abb8sdd26662ff2ddc74e33d1e2ce0af7ssaa904825aec32e967418s98b1effd06531s15637cdca372bff0004f035',
         mongo_url: 'mongodb://127.0.0.1:27017/hifilm_transactions',
         SENDGRID_API_KEY : "",
-        EMAIL_FROM : "HiFilm_report@info",
+        EMAIL_FROM : "arman.kuchukyan@gmail.com",
         http_port: 8088,
         http_host: '0.0.0.0'
     },
