@@ -9,14 +9,7 @@ module.exports = function(app, multipart) {
 
     var apiController             = require('../controllers/api/apiController');
 
-    // Create user
-    app.get('/api/1.0/hifilm/callback/', function(req, res) { apiController.authorizeInstagram(req, res); });
-
-    // object images
-    app.get('/api/1.0/hifilm/:id', function(req, res) { apiController.imageShow(req, res); });
-
-    app.get('/api/1.0/hifilm/:id', function(req, res) { apiController.imageShow(req, res); });
-    // GET USER LAST IMAGE
-    app.get('/api/1.0/hifilm/:id',   function(req, res) { apiController.userLastImage(req, res); });
+    // Send email
+    app.post('/api/1.0/hifilm/send/email', function(req, res) { apiController.sendEmail(req, res); });
 
 };

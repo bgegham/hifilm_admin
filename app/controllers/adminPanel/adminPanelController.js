@@ -4,7 +4,6 @@ var config                  = require('../../../config')[APP_ENV],
     md5                     = require('MD5'),
     path                    = require('path'),
     Admin                   = require('../../models/Admin'),
-    User                    = require('../../models/Transaction'),
     async                   = require("async"),
     fs                      = require('fs');
 
