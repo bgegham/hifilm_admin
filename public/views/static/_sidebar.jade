@@ -1,0 +1,34 @@
+script.
+    $('.toggle-menu-btn').click(function ($event) {
+        $event.stopPropagation();
+        $("#wrapper").toggleClass("toggled");
+    });
+    function initMenu() {
+        $('#myAccordion li a').on( "click", function () {
+            $('.collapse.in').collapse('hide');
+        });
+    }
+    $(document).ready(function () {
+        initMenu();
+    });
+#sidebar-wrapper
+    ul.sidebar-nav#myAccordion
+        li.sidebar-brand
+            a
+                i.fa.fa-user
+                |   #{username}
+        li(class=(active_menu === 'dashboard' ? 'activeMenu' : ''))
+            span.selected
+            a(href="/cpanel/admin/dashboard")
+                i.fa.fa-dashboard
+                span    Statistics
+        li(class=(active_menu === 'transactions' ? 'activeMenu' : ''))
+            span.selected
+            a(href="/cpanel/admin/transactions")
+                i.fa.fa-exchange
+                span    Transactions
+        li(class=(active_menu === 'transactions' ? 'activeMenu' : ''))
+            span.selected
+            a(href="/cpanel/admin/graphics")
+                i.fa.fa-line-chart
+                span    Graphics

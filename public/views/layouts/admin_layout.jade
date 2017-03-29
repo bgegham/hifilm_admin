@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        // meta
+        meta(charset="utf-8")
+        <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+        meta(content="width=device-width, initial-scale=1.0, maximum-scale=1", name="viewport")
+
+        // title
+        title= title
+
+        // stylesheets
+        link(rel='icon', href='/img/favicon.png', type='image/png')
+        link(rel='mask-icon', href='/img/icon.svg', color='blue')
+        link(rel='image/svg+xml', href='/img/favicon.svg', type='image/png')
+        link(rel='stylesheet', href='/libs/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/libs/font-awesome/css/font-awesome.min.css')
+
+        // custom css
+        link(rel='stylesheet', href='/css/main.css')
+        link(rel='stylesheet', href='/css/response.css')
+
+        block specific_stylesheets
+
+        // javascript
+        script(type="text/javascript", src='/libs/jquery/dist/jquery.min.js')
+        script(type="text/javascript", src='/libs/bootstrap/dist/js/bootstrap.min.js')
+
+        // custom js
+        script(type="text/javascript", src='/js/main.js')
+
+    body
+
+        block content
+
+        block specific_scripts

@@ -1,0 +1,74 @@
+extends ../../layouts/admin_layout
+
+block specific_stylesheets
+    link(rel='stylesheet', href='/css/admin.css')
+
+block content
+    include ../../static/_admin_header
+    #wrapper
+        include ../../static/_sidebar
+        #page-content-wrapper
+            .row
+                .col-lg-3.col-md-6
+                    .panel.panel-red
+                        .panel-heading
+                            .row
+                                .col-xs-3
+                                    i.fa.fa-address-book-o.fa-5x
+                                .col-xs-9.text-right
+                                    .huge #{totalUsers}
+                                    div Subscribers
+                        a(href='/control/admin/subscribers')
+                            .panel-footer
+                                span.pull-left View Details
+                                span.pull-right
+                                    i.fa.fa-arrow-circle-right
+                                .clearfix
+                .col-lg-3.col-md-6
+                    .panel.panel-green
+                        .panel-heading
+                            .row
+                                .col-xs-3
+                                    i.fa.fa-calendar-check-o.fa-5x
+                                .col-xs-9.text-right
+                                    .huge #{totalAgenda}
+                                    div Events
+                        a(href='/control/admin/agenda')
+                            .panel-footer
+                                span.pull-left View Details
+                                span.pull-right
+                                    i.fa.fa-arrow-circle-right
+                                .clearfix
+                .col-lg-3.col-md-6
+                    .panel.panel-yellow
+                        .panel-heading
+                            .row
+                                .col-xs-3
+                                    i.fa.fa-briefcase.fa-5x
+                                .col-xs-9.text-right
+                                    .huge #{soldPartners}
+                                    div Partners
+                        a(href='/control/admin/partners')
+                            .panel-footer
+                                span.pull-left View Details
+                                span.pull-right
+                                    i.fa.fa-arrow-circle-right
+                                .clearfix
+                .col-lg-3.col-md-6
+                    .panel.panel-primary
+                        .panel-heading
+                            .row
+                                .col-xs-3
+                                    i.fa.fa-users.fa-5x
+                                .col-xs-9.text-right
+                                    .huge #{totalSpeakers}
+                                    div Speakers
+                        a(href='/control/admin/speaker')
+                            .panel-footer
+                                span.pull-left View Details
+                                span.pull-right
+                                    i.fa.fa-arrow-circle-right
+                                .clearfix
+
+
+

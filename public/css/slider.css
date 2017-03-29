@@ -1,0 +1,17 @@
+img {
+    width: 100%;
+}
+.carousel-indicators li {
+    margin: 10px;
+}
+.carousel-indicators .active {
+    margin: 9px;
+}
+.carousel-control.left,.carousel-control.right{
+    background: none;
+}
+@media screen and (min-width: 768px){
+    .carousel-indicators {
+        bottom: 5px;
+    }
+}

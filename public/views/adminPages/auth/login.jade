@@ -1,0 +1,21 @@
+extends ../../layouts/admin_layout
+block specific_stylesheets
+    link(rel='stylesheet', href='/css/login.css')
+
+block content
+    .container-fluid
+        .row
+            .login-page
+                .form
+                    .form-header
+                        h3 HIFILM ADMIN
+                    .form-body
+                        .switch-form.login-form
+                            p.error-login.error-txt
+                            input#username(type='text', placeholder='username', required)
+                            input#password(type='password', placeholder='password', required)
+                            button#login-button login
+
+block specific_scripts
+    script(type="text/javascript", src='/js/login.js')
+
