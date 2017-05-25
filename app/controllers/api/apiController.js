@@ -17,9 +17,13 @@ API_Controller.prototype.sendEmail    = function (request, response) {
     if((request.body.email || request.body.phone)){
         //sending process
         response.render(path.resolve(global.ROOT_DIR+'public/views/email_templates/subscribe.jade'), {
-            _name_           : request.body.name || " ",
+            _name_            : request.body.name  || " ",
             _email_           : request.body.email || " ",
-            _phone_           : request.body.phone || " "
+            _phone_           : request.body.phone || " ",
+            _date_time_       : request.body.date_time || " ",
+            _theatre_name_    : request.body.theatre_name || " ",
+            _movie_name_      : request.body.movie_name || " ",
+            _price_           : request.body.price || " "
         }, function(err, html){
 
             var from_email  = new emailHelper.Email("reserve@ticket");
