@@ -14,6 +14,12 @@
             font-size: 14px;
             padding: 0 15px;
         }
+        #step2{
+            display: none;
+        }
+        #step3{
+            display: none;
+        }
         @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
             body{
                 font-size: 18px;
@@ -58,7 +64,7 @@
             }
         }
         .green{
-            color: #00ff00;
+            /*color: #00ff00;*/
             font-weight: 500;
         }
         .form{
@@ -334,7 +340,9 @@
 
 </head>
 <body>
-<div id="loader" class='custom_loader'><p class='loading-cult'>Loading</p><div class='uil-cube-css' style='-webkit-transform:scale(0.23)'><div></div><div></div><div></div><div></div></div></div>
+<div id="loader" class='custom_loader'><p class='loading-cult'>Loading</p><div class='uil-cube-css' style='-webkit-transform:scale(0.23)'><div></div><div></div><div></div><div></div></div>
+</div>
+
 <div id="step1">
     <div class="top-auto">
         <h1 class="white text-center" id="_t1">
@@ -369,11 +377,32 @@
 
 </div>
 <div id="step2">
+    <div class="top-auto">
+        <h1 class="white text-center" id="_t6">
+            THANK YOU!
+        </h1>
+    </div>
 
+    <p id="_t8" style="text-align: center;color:#fff;font-size: 14px;line-height: 1.4;margin-top: 30px;"></p>
+    <p id="_t9" style="text-align: center;color:#ffe100;font-size: 14px;line-height: 1.4;margin-top: 30px;"></p>
+    <p id="_t10" style="text-align: center;color:#ffe100;font-size: 14px;line-height: 1.4;margin-top: 30px;"></p>
+    <p id="_t11" style="text-align: center;color:#ffe100;font-size: 14px;line-height: 1.4;margin-top: 30px;"></p>
+
+
+    <div>
+        <button id="_t7" class="submitForm" onclick="window.location.href = 'inapp://back';">
+            Bach to HiFilm
+        </button>
+    </div>
 </div>
 
 <script>
     (function() {
+        // date_time
+        // theatre_name
+        // movie_name
+        // price
+        // lang
         function getParameterByName(name) {
             name    = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex   = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -395,7 +424,13 @@
             "_t2"      : "Tickets of the <span class='green'>BEST</span><br/> seats available at the moment",
             "_t3"      : "In case of reservation you have to come 15 minutes BEFORE the movie starts with the special code sent by us to pay and take your tickets.",
             "_t4" : "Support",
-            "_t5"      : "Send"
+            "_t5"      : "Send",
+            "_t6"      : "THANK YOU!",
+            "_t7" : "Back to HiFilm",
+            "_t8" : "Your request was received by our team.",
+            "_t9" : "Our specialist will contact you to help reserve best tickets available at this moment. <br> .",
+            "_t10" : "We will reserve YOUR seats and send you a special code that you will have to show in the cinema. <br> .",
+            "_t11" : "You will come 15 minutes before the showtime to cinema to pay and take you tickets… don’t be late :))"
         };
         TR.ru = {
             "_p1"      : "Имя",
@@ -405,7 +440,13 @@
             "_t2"      : "<span class='green'>Лучшие</span> билеты <br/>доступные на данный момент",
             "_t3"      : "В случае резервации билетов вам нужно подойти к кассе кинотеатра за 15 минут до начала сеанса, назвать специальный код, который мы вам отправим и заплатить за билеты.",
             "_t4" : "Помощь",
-            "_t5"      : "Отправить"
+            "_t5"      : "Отправить",
+            "_t6"      : "СПАСИБО!",
+            "_t7" : "Назад к HiFilm",
+            "_t8" : "Мы получили ваш запрос.",
+            "_t9" : "Наш специалист свяжется с Вами и предложит варианты самых удобных билетов.",
+            "_t10" : "Мы зарезервируем ВАШИ места и отправим код на Ваш номер телефона.",
+            "_t11" : "Вы подойдете к кассам кинотеатра за 15 минут до начала сеанса и назовете код, который мы вам отправим. Не опоздайте!! :)"
         };
         TR.am = {
             "_p1"      : "Անուն",
@@ -415,7 +456,13 @@
             "_t2"      : "Այս պահին առկա <span class='green'>ԼԱՎԱԳՈՒՅՆ</span> <br/>նստատեղերի տոմսերը",
             "_t3"      : "Ամրագրման դեպքում Դուք պետք է 15 րոպե առաջ մոտենք տոմսարկղ և վճարեք տոմսի համար, ներկայացնելով մեր կողմից տրամադրված ծածկագիրը․",
             "_t4" : "Օգնություն",
-            "_t5"      : "Ուղարկել"
+            "_t5"      : "Ուղարկել",
+            "_t6"      : "ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ",
+            "_t7" : "Վերադառնալ HiFilm",
+            "_t8" : "Մենք ստացանք ձեր հարցումը։",
+            "_t9" : "Մեր մասնագետը կկապվի ձեզ հետ և կառաջարկի այս պահին առկա լավագույն նստատեղերի տարբերակները։",
+            "_t10" : "Մենք կամրագրենք ՁԵՐ և կուղարկենք հաստատման ծածկագիր ձեր հեռախոսահամարին։",
+            "_t11" : "Դուք 15 րոպպե կինոյի սկզբից առաջ մոտենում եք կինոթատրոնի դրամարկղ և վճարելով ստանում եք ձեր տեմսերը․․․տեսեք․․․չուշանաք ;)"
         };
 
 
@@ -439,7 +486,7 @@
             _tr_ = TR.en;
         }
 
-        for (var i=1; i<=5; i++) {
+        for (var i=1; i<=11; i++) {
             document.getElementById("_t"+i).innerHTML = _tr_["_t"+i];
         }
         for (var k=1; k<=3; k++) {
@@ -488,7 +535,13 @@
                 data_for_send   = {
                     'name': document.getElementById("_p1").value,
                     'phone': document.getElementById("_p2").value,
-                    'email': document.getElementById("_p3").value
+                    'email': document.getElementById("_p3").value,
+                    'date_time' : getParameterByName("date_time").replace(/\+/g, " ").replace(/\%3A/g, ":"),
+                    'theatre_name' : getParameterByName("theatre_name").replace(/\+/g, " ").replace(/\%3A/g, ":"),
+                    'movie_name' : getParameterByName("movie_name").replace(/\+/g, " ").replace(/\%3A/g, ":"),
+                    'price' : getParameterByName("price").replace(/\+/g, " ").replace(/\%3A/g, ":").replace("?lang=en", "")
+                        .replace("?lang=ru", "")
+                        .replace("?lang=am", "")
                 };
 
                 _xhr.open('POST', "http://dev.hifilmapp.com:8088/api/1.0/hifilm/send/email", true);
@@ -501,16 +554,22 @@
                 _xhr.onload = function() {
                     var res = JSON.parse(this.responseText) || null;
                     if (res) {
-                        console.log("res");
-                        console.log(res)
+                        document.getElementById("step1").style.display = "none";
+                        document.getElementById("step2").style.display = "block";
+                        document.getElementById("loader").style.display = "none";
                     } else {
-                        console.log(this.responseText)
+                        document.getElementById("step1").style.display = "none";
+                        document.getElementById("step3").style.display = "block";
+                        document.getElementById("loader").style.display = "none";
                     }
                 };
                 _xhr.onerror = function() {
-                    console.log("error", this.responseText)
+                    document.getElementById("step1").style.display = "none";
+                    document.getElementById("step3").style.display = "block";
+                    document.getElementById("loader").style.display = "none";
                 };
                 setTimeout(function () {
+                    document.getElementById("loader").style.display = "block";
                     _xhr.send( JSON.stringify(data_for_send) );
                 },0);
             }
