@@ -7,7 +7,8 @@ var config                  = require('../../../config')[APP_ENV],
     User                    = require('../../models/Transaction'),
     async                   = require("async"),
     emailHelper             = require('sendgrid').mail,
-    fs                      = require('fs');
+    fs                      = require('fs'),
+    moment                  = require('moment');
 
 
 var API_Controller = function() {};
@@ -28,7 +29,7 @@ API_Controller.prototype.sendEmail    = function (request, response) {
 
             var from_email  = new emailHelper.Email("reserve@ticket");
             var to_email    = new emailHelper.Email(config.EMAIL_FROM);
-            var subject     = "Ticket reservation";
+            var subject     = "Ticket reservation by:"+moment().format("DD-MM-YYYY HH:mm:ss");
             var content     = new emailHelper.Content('text/html', html);
             var mail        = new emailHelper.Mail(from_email, subject, to_email, content);
             var sg          = require('sendgrid')(config.SENDGRID_API_KEY);
