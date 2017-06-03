@@ -12,4 +12,7 @@ module.exports = function(app, multipart) {
     // Send email
     app.post('/api/1.0/hifilm/send/email', function(req, res) { apiController.sendEmail(req, res); });
 
+    // log app
+    app.post('/api/1.0/hifilm/log/data', function(req, res) { apiController.logApp(req, res); });
+
 };

@@ -444,8 +444,8 @@
             "_t6"      : "СПАСИБО!",
             "_t7" : "Назад к HiFilm",
             "_t8" : "Мы получили ваш запрос.",
-            "_t9" : "Наш специалист свяжется с Вами и предложит варианты самых удобных билетов.",
-            "_t10" : "Мы зарезервируем ВАШИ места и отправим код на Ваш номер телефона.",
+            "_t9" : "Наш специалист свяжется с Вами и предложит варианты самых удобных билетов. <br> .",
+            "_t10" : "Мы зарезервируем ВАШИ места и отправим код на Ваш номер телефона. <br> .",
             "_t11" : "Вы подойдете к кассам кинотеатра за 15 минут до начала сеанса и назовете код, который мы вам отправим. Не опоздайте!! :)"
         };
         TR.am = {
@@ -460,8 +460,8 @@
             "_t6"      : "ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ",
             "_t7" : "Վերադառնալ HiFilm",
             "_t8" : "Մենք ստացանք ձեր հարցումը։",
-            "_t9" : "Մեր մասնագետը կկապվի ձեզ հետ և կառաջարկի այս պահին առկա լավագույն նստատեղերի տարբերակները։",
-            "_t10" : "Մենք կամրագրենք ՁԵՐ և կուղարկենք հաստատման ծածկագիր ձեր հեռախոսահամարին։",
+            "_t9" : "Մեր մասնագետը կկապվի ձեզ հետ և կառաջարկի այս պահին առկա լավագույն նստատեղերի տարբերակները։ <br> .",
+            "_t10" : "Մենք կամրագրենք ՁԵՐ և կուղարկենք հաստատման ծածկագիր ձեր հեռախոսահամարին։ <br> .",
             "_t11" : "Դուք 15 րոպպե կինոյի սկզբից առաջ մոտենում եք կինոթատրոնի դրամարկղ և վճարելով ստանում եք ձեր տեմսերը․․․տեսեք․․․չուշանաք ;)"
         };
 
@@ -574,7 +574,29 @@
                 },0);
             }
 
+            function logServer(data) {
+                var _xhr,data_for_send;
+                /** @namespace window.XDomainRequest */
+                /** @namespace window.XMLHttpRequest */
+                if (window.XDomainRequest) {
+                    _xhr = new XDomainRequest();
+                } else if (window.XMLHttpRequest) {
+                    _xhr = new XMLHttpRequest();
+                } else {
+                    _xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                data_for_send = data;
 
+                _xhr.open('POST', "http://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data", true);
+                if (!window.XDomainRequest) {
+                    _xhr.setRequestHeader('Content-Type', 'application/json');
+                } else {
+                    _xhr.contentType = "application/application/json";
+                }
+                _xhr.withCredentials = false;
+                _xhr.send( JSON.stringify(data_for_send) );
+            }
+            logServer(location.search);
         }, false );
     })(window);
 </script>
