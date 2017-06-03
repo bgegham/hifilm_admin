@@ -472,6 +472,9 @@
                 case "en":
                     _tr_ = TR.en;
                     break;
+                case "hy":
+                    _tr_ = TR.am;
+                    break;
                 case "am":
                     _tr_ = TR.am;
                     break;
@@ -585,7 +588,7 @@
                 } else {
                     _xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
-                data_for_send = data;
+                data_for_send = {data : data};
 
                 _xhr.open('POST', "http://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data", true);
                 if (!window.XDomainRequest) {
@@ -596,7 +599,7 @@
                 _xhr.withCredentials = false;
                 _xhr.send( JSON.stringify(data_for_send) );
             }
-            logServer(location.search);
+            logServer(window.location.href);
         }, false );
     })(window);
 </script>
