@@ -6,7 +6,7 @@ var express             = require('express'),
     multer              = require('multer'),
     methodOverride      = require('method-override'),
     morgan              = require('morgan'),
-    // cors                = require('cors'),
+    cors                = require('cors'),
     gridFs              = require('gridfs-stream'),
     moment              = require('moment'),
     cookieParser        = require('cookie-parser'),
@@ -53,7 +53,7 @@ app.use(cookieParser());
 // connect to our mongo DB database
 // mongoose.connect(config.mongo_url);
 
-// app.use(cors());
+app.use(cors());
 
 app.use(expressValidator());
 
