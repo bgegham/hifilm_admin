@@ -363,7 +363,7 @@
     </div>
     <div>
         <p class="info-text" id="_t3">
-            In case of reservation you have to come 15 minutes BEFORE the movie starts with the special code sent by us to pay and take your tickets.
+            In case of reservation you have to come 30 minutes BEFORE the movie starts with the special code sent by us to pay and take your tickets.
         </p>
     </div>
     <div>
@@ -422,7 +422,7 @@
             "_p3"     : "E-mail",
             "_t1"   : "RESERVE",
             "_t2"      : "Tickets of the <span class='green'>BEST</span><br/> seats available at the moment",
-            "_t3"      : "In case of reservation you have to come 15 minutes BEFORE the movie starts with the special code sent by us to pay and take your tickets.",
+            "_t3"      : "In case of reservation you have to come 30 minutes BEFORE the movie starts with the special code sent by us to pay and take your tickets.",
             "_t4" : "Support",
             "_t5"      : "Send",
             "_t6"      : "THANK YOU!",
@@ -430,7 +430,7 @@
             "_t8" : "Your request was received by our team.",
             "_t9" : "Our specialist will contact you to help reserve best tickets available at this moment. <br> .",
             "_t10" : "We will reserve YOUR seats and send you a special code that you will have to show in the cinema. <br> .",
-            "_t11" : "You will come 15 minutes before the showtime to cinema to pay and take you tickets… don’t be late :))"
+            "_t11" : "You will come 30 minutes before the showtime to cinema to pay and take you tickets… don’t be late :))"
         };
         TR.ru = {
             "_p1"      : "Имя",
@@ -438,7 +438,7 @@
             "_p3"     : "Адрес эл. Почты",
             "_t1"   : "ЗАРЕЗЕРВИРОВАТЬ",
             "_t2"      : "<span class='green'>Лучшие</span> билеты <br/>доступные на данный момент",
-            "_t3"      : "В случае резервации билетов вам нужно подойти к кассе кинотеатра за 15 минут до начала сеанса, назвать специальный код, который мы вам отправим и заплатить за билеты.",
+            "_t3"      : "В случае резервации билетов вам нужно подойти к кассе кинотеатра за 30 минут до начала сеанса, назвать специальный код, который мы вам отправим и заплатить за билеты.",
             "_t4" : "Помощь",
             "_t5"      : "Отправить",
             "_t6"      : "СПАСИБО!",
@@ -446,7 +446,7 @@
             "_t8" : "Мы получили ваш запрос.",
             "_t9" : "Наш специалист свяжется с Вами и предложит варианты самых удобных билетов. <br> .",
             "_t10" : "Мы зарезервируем ВАШИ места и отправим код на Ваш номер телефона. <br> .",
-            "_t11" : "Вы подойдете к кассам кинотеатра за 15 минут до начала сеанса и назовете код, который мы вам отправим. Не опоздайте!! :)"
+            "_t11" : "Вы подойдете к кассам кинотеатра за 30 минут до начала сеанса и назовете код, который мы вам отправим. Не опоздайте!! :)"
         };
         TR.am = {
             "_p1"      : "Անուն",
@@ -454,7 +454,7 @@
             "_p3"     : "Էլ․ հասցե",
             "_t1"   : "ԱՄՐԱԳՐԵԼ",
             "_t2"      : "Այս պահին առկա <span class='green'>ԼԱՎԱԳՈՒՅՆ</span> <br/>նստատեղերի տոմսերը",
-            "_t3"      : "Ամրագրման դեպքում Դուք պետք է 15 րոպե առաջ մոտենք տոմսարկղ և վճարեք տոմսի համար, ներկայացնելով մեր կողմից տրամադրված ծածկագիրը․",
+            "_t3"      : "Ամրագրման դեպքում Դուք պետք է 30 րոպե առաջ մոտենք տոմսարկղ և վճարեք տոմսի համար, ներկայացնելով մեր կողմից տրամադրված ծածկագիրը․",
             "_t4" : "Օգնություն",
             "_t5"      : "Ուղարկել",
             "_t6"      : "ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ",
@@ -462,7 +462,7 @@
             "_t8" : "Մենք ստացանք ձեր հարցումը։",
             "_t9" : "Մեր մասնագետը կկապվի ձեզ հետ և կառաջարկի այս պահին առկա լավագույն նստատեղերի տարբերակները։ <br> .",
             "_t10" : "Մենք կամրագրենք ՁԵՐ և կուղարկենք հաստատման ծածկագիր ձեր հեռախոսահամարին։ <br> .",
-            "_t11" : "Դուք 15 րոպպե կինոյի սկզբից առաջ մոտենում եք կինոթատրոնի դրամարկղ և վճարելով ստանում եք ձեր տեմսերը․․․տեսեք․․․չուշանաք ;)"
+            "_t11" : "Դուք 30 րոպպե կինոյի սկզբից առաջ մոտենում եք կինոթատրոնի դրամարկղ և վճարելով ստանում եք ձեր տեմսերը․․․տեսեք․․․չուշանաք ;)"
         };
 
 
@@ -590,7 +590,7 @@
                 }
                 data_for_send = {data : data};
 
-                _xhr.open('POST', "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data", true);
+                _xhr.open('POST', "http://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data", true);
                 if (!window.XDomainRequest) {
                     _xhr.setRequestHeader('Content-Type', 'application/json');
                 } else {

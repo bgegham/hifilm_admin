@@ -190,6 +190,9 @@
                 case "am":
                     _tr_ = TR.am;
                     break;
+                case "hy":
+                    _tr_ = TR.am;
+                    break;
                 case "ru":
                     _tr_ = TR.ru;
                     break;
@@ -872,23 +875,23 @@
                 }
             });
 
-            // $("#visa").on("submit", function(e){
-            //     e.preventDefault();
-            // var reqData = Object();
-            // reqData.seatsSelected   = [];
-            // $('.selected-seats tbody tr td:nth-child(2)').each( function(){
-            //     reqData.seatsSelected.push( $(this).text() );
-            // });
-            // reqData.userInfoForm    = $("#visa").serializeArray();
-            // reqData.filmName = $("#_tFilmName").html();
-            // reqData.filmName = $("#_tFilmName").html();
+            $("#visa").on("submit", function(e){
+                e.preventDefault();
+                var reqData = Object();
+                reqData.seatsSelected   = [];
+                $('.selected-seats tbody tr td:nth-child(2)').each( function(){
+                    reqData.seatsSelected.push( $(this).text() );
+                });
+                reqData.userInfoForm    = $("#visa").serializeArray();
+                reqData.filmName = $("#_tFilmName").html();
+                reqData.filmName = $("#_tFilmName").html();
 
-            // var reqData = [];
-            // reqData['seat_arr[]']  = $("#checkout_form").serializeObject()['seat_arr[]'];
-            // reqData["user_info[payment_type]"] = $("#visa").serializeObject()['user_info[payment_type]'];
-            // reqData["user_info[email]"] =  $("#visa").serializeObject()['user_info[email]'];
-            // console.log(reqData)
-            // });
+                // var reqData = [];
+                // reqData['seat_arr[]']  = $("#checkout_form").serializeObject()['seat_arr[]'];
+                // reqData["user_info[payment_type]"] = $("#visa").serializeObject()['user_info[payment_type]'];
+                // reqData["user_info[email]"] =  $("#visa").serializeObject()['user_info[email]'];
+                console.log(reqData);
+            });
 
         });
 
