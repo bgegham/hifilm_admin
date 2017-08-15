@@ -5,6 +5,8 @@ module.exports = function(app, multipart) {
     var adminPanelController          = require('../controllers/adminPanel/adminPanelController');
 
     // login page
+    app.get('/',                         multipart.array(), function(req, res){ adminPanelController.get_login(req, res); });
+
     app.get('/cpanel/admin/login',       multipart.array(), function(req, res){ adminPanelController.get_login(req, res); });
 
     // create user session on login
