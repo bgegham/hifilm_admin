@@ -18,4 +18,8 @@ module.exports = function(app, multipart) {
     // dashboard
     app.get('/cpanel/admin/dashboard',   multipart.array(), function(req, res){ adminPanelController.get_dashboard(req, res); });
 
+    app.get('/cpanel/admin/transactions',   multipart.array(), function(req, res){ adminPanelController.get_transactions(req, res); });
+
+    app.get('/cpanel/admin/graphics',   multipart.array(), function(req, res){ adminPanelController.get_graphics(req, res); });
+
 };

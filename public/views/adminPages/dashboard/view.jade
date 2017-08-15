@@ -10,15 +10,15 @@ block content
         #page-content-wrapper
             .row
                 .col-lg-3.col-md-6
-                    .panel.panel-red
+                    .panel.panel-yellow
                         .panel-heading
                             .row
                                 .col-xs-3
-                                    i.fa.fa-address-book-o.fa-5x
+                                    i.fa.fa-paper-plane-o.fa-5x
                                 .col-xs-9.text-right
-                                    .huge #{totalUsers}
-                                    div Subscribers
-                        a(href='/control/admin/subscribers')
+                                    .huge #{allRequests}
+                                    div Request total
+                        a(href='/control/admin/partners')
                             .panel-footer
                                 span.pull-left View Details
                                 span.pull-right
@@ -31,8 +31,8 @@ block content
                                 .col-xs-3
                                     i.fa.fa-calendar-check-o.fa-5x
                                 .col-xs-9.text-right
-                                    .huge #{totalAgenda}
-                                    div Events
+                                    .huge #{totalSuccess}
+                                    div Success requests
                         a(href='/control/admin/agenda')
                             .panel-footer
                                 span.pull-left View Details
@@ -40,15 +40,15 @@ block content
                                     i.fa.fa-arrow-circle-right
                                 .clearfix
                 .col-lg-3.col-md-6
-                    .panel.panel-yellow
+                    .panel.panel-red
                         .panel-heading
                             .row
                                 .col-xs-3
-                                    i.fa.fa-briefcase.fa-5x
+                                    i.fa.fa-times-circle-o.fa-5x
                                 .col-xs-9.text-right
-                                    .huge #{soldPartners}
-                                    div Partners
-                        a(href='/control/admin/partners')
+                                    .huge #{allFails}
+                                    div Requests fail
+                        a(href='/control/admin/subscribers')
                             .panel-footer
                                 span.pull-left View Details
                                 span.pull-right
@@ -59,10 +59,10 @@ block content
                         .panel-heading
                             .row
                                 .col-xs-3
-                                    i.fa.fa-users.fa-5x
+                                    i.fa.fa-cogs.fa-5x
                                 .col-xs-9.text-right
-                                    .huge #{totalSpeakers}
-                                    div Speakers
+                                    .huge #{totalAmount}
+                                    div Total amount
                         a(href='/control/admin/speaker')
                             .panel-footer
                                 span.pull-left View Details

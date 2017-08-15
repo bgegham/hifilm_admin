@@ -18,12 +18,12 @@
             $.ajax({
                 type: 'post',
                 dataType: 'json',
-                url: '/control/admin/logout',
+                url: '/cpanel/admin/logout',
                 success: function (data) {
                     document.location.href = data.url;
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    document.location.href = '/control/admin/login';
+                    document.location.href = '/cpanel/admin/login';
                 }
             });
         }

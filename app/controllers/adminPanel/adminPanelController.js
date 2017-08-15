@@ -4,6 +4,7 @@ var config                  = require('../../../config')[APP_ENV],
     md5                     = require('MD5'),
     path                    = require('path'),
     Admin                   = require('../../models/Admin'),
+    Transaction             = require('../../models/Transaction'),
     async                   = require("async"),
     fs                      = require('fs');
 
@@ -23,6 +24,7 @@ AdminPanelController.prototype.CREATE_SESSION   = function (request, response) {
         password        = request.body.password;
 
     Admin.findOne({ username: username }).exec( function (err, admin) {
+        console.log(err)
         if (admin == null) {
             ResponseUtils.badRequest(response, errorMessage);
         } else {
@@ -54,21 +56,75 @@ AdminPanelController.prototype.DESTROY_SESSION  = function (request, response) {
 AdminPanelController.prototype.get_dashboard    = function (request, response) {
     if(request.session.admin){
 
-        var totalUsers           = 0,
-            totalAgenda          = 0,
-            soldPartners         = 0,
-            totalSpeakers        = 0;
+        var allRequests          = 0,
+            totalSuccess          = 0,
+            allFails          = 0,
+            totalAmount        = 0;
 
         response.render( path.resolve('public/views/adminPages/dashboard/view.jade'), {
             title               : "HIFILM: admin dashboard",
             active_menu         : "dashboard",
             username            : request.session.admin.username,
-            totalUsers          : totalUsers,
-            totalAgenda         : totalAgenda,
-            soldPartners        : soldPartners,
-            totalSpeakers       : totalSpeakers
+            allRequests          : allRequests,
+            totalSuccess         : totalSuccess,
+            allFails        : allFails,
+            totalAmount       : totalAmount
         });
         response.end();
+
+    } else {
+        response.redirect('/cpanel/admin/login');
+        response.end();
+    }
+};
+
+AdminPanelController.prototype.get_transactions    = function (request, response) {
+    if(request.session.admin){
+
+        var allRequests             = 0,
+            totalSuccess            = 0,
+            allFails                = 0,
+            totalAmount             = 0;
+
+        Transaction.find({})
+            .sort({'created_at': -1})
+            .exec(function (err, _transactions) {
+                if(err){
+                    response.redirect('/404');
+                    response.end();
+                } else {
+                    response.render( path.resolve('public/views/adminPages/transactions/view.jade'), {
+                        title               : "HIFILM: admin transactions",
+                        active_menu         : "transactions",
+                        username            : request.session.admin.username,
+                        data                : _transactions,
+                        allRequests             : allRequests,
+                        totalSuccess            : totalSuccess,
+                        allFails                : allFails,
+                        totalAmount             : totalAmount
+                    });
+                    response.end();
+                }
+            });
+
+
+    } else {
+        response.redirect('/cpanel/admin/login');
+        response.end();
+    }
+};
+
+AdminPanelController.prototype.get_graphics    = function (request, response) {
+    if(request.session.admin){
+
+
+        response.render( path.resolve('public/views/adminPages/graphics/view.jade'), {
+            title               : "HIFILM: admin graphics",
+            active_menu         : "graphics",
+            username            : request.session.admin.username
+        });
+        response.end();
+
 
     } else {
         response.redirect('/cpanel/admin/login');

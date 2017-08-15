@@ -1,11 +1,5 @@
 (function() {
 
-    $.ajax({
-        type: "POST",
-        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
-        data: window.location.href
-    });
-
     function getParameterByName(name) {
         name    = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex   = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -253,8 +247,25 @@
                         "</div>"
                     );
 
+                    $.ajax({
+                        type: "POST",
+                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        data: {
+                            type : "card",
+                            status : "success"
+                        }
+                    });
+
                 } else if ((getParameterByName('AWS_RESPCODE') && getParameterByName('AWS_RESPCODE') !== "00") || (getParameterByName('state') && getParameterByName('state') === "cancel")) {
                     window.location.href = "inapp://errorCard";
+                    $.ajax({
+                        type: "POST",
+                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        data: {
+                            type : "card",
+                            status : "error"
+                        }
+                    });
                     $('#client').hide();
                     $('body').append("<div class='error-purchase-control'>" +
                         "<h1 style='letter-spacing: 1px;margin-top: 40px;'>" +
@@ -294,6 +305,14 @@
 
                 if(getParameterByName('cod') && getParameterByName('cod') == "1"){
                     window.location.href = "inapp://successDelivery";
+                    $.ajax({
+                        type: "POST",
+                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        data: {
+                            type : "delivery",
+                            status : "success"
+                        }
+                    });
                     $('#client').hide();
                     $('body').append("<div class='success-purchase-control'>" +
                         "<h1 style='letter-spacing: 1px;'>" +
@@ -316,6 +335,14 @@
 
                 } else if(getParameterByName('cod') && getParameterByName('cod') == "error" ){
                     window.location.href = "inapp://errorDelivery";
+                    $.ajax({
+                        type: "POST",
+                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        data: {
+                            type : "delivery",
+                            status : "error"
+                        }
+                    });
                     $('#client').hide();
                     $('body').append("<div class='error-purchase-control'>" +
                         "<h1 style='letter-spacing: 1px;'>" +
@@ -877,20 +904,14 @@
 
             $("#visa").on("submit", function(e){
                 e.preventDefault();
-                var reqData = Object();
-                reqData.seatsSelected   = [];
-                $('.selected-seats tbody tr td:nth-child(2)').each( function(){
-                    reqData.seatsSelected.push( $(this).text() );
+                $.ajax({
+                    type: "POST",
+                    url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                    data: {
+                        type : "card",
+                        status : "inProgress"
+                    }
                 });
-                reqData.userInfoForm    = $("#visa").serializeArray();
-                reqData.filmName = $("#_tFilmName").html();
-                reqData.filmName = $("#_tFilmName").html();
-
-                // var reqData = [];
-                // reqData['seat_arr[]']  = $("#checkout_form").serializeObject()['seat_arr[]'];
-                // reqData["user_info[payment_type]"] = $("#visa").serializeObject()['user_info[payment_type]'];
-                // reqData["user_info[email]"] =  $("#visa").serializeObject()['user_info[email]'];
-                console.log(reqData);
             });
 
         });

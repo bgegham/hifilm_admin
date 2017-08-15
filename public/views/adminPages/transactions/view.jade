@@ -14,26 +14,20 @@ block content
                     strong
             .row
                 .col-xs-12
-                    .box.box-primary
-                        .box-header.with-border
-                            h3.box-title About block content
-                        form(method="post",role='form', action="/control/admin/transactions")
-                            input(type="hidden", value=oldVal._id,name="_id")
-                            .box-body
-                                .form-group
-                                    label(for='about1') Paragraph 1
-                                    textarea#about1.form-control(name="text1",rows="4", placeholder='transactions text paragraph 1')= (oldVal && oldVal.text1) ? oldVal.text1 : ''
-                                .form-group
-                                    label(for='about2') Paragraph 1
-                                    textarea#about2.form-control(name="text2",rows="1", placeholder='transactions text paragraph 2')= (oldVal && oldVal.text2) ? oldVal.text2 : ''
-                                .form-group
-                                    label(for='about3') Paragraph 3
-                                    textarea#about3.form-control(name="text3",rows="1", placeholder='transactions text paragraph 3')= (oldVal && oldVal.text3) ? oldVal.text3 : ''
-                                .form-group
-                                    label(for='about4') Paragraph 4
-                                    textarea#about4.form-control(name="text4",rows="2", placeholder='transactions text paragraph 4')= (oldVal && oldVal.text4) ? oldVal.text4 : ''
-                            .box-footer.text-right
-                                button.btn.btn3d.btn-default(type='reset', style="margin-right:15px;") Reset
-                                button.btn.btn3d.btn-success(type='submit') Update
+                    h3.box-title All transactions
+                .col-xs-12
+                    table.table.table-bordered.table-condensed.table-hover
+                        thead
+                            tr
+                                th Date
+                                th Data
+                        tbody
+                            each item in data
+                                tr
+                                    td= moment(item.created_at).format('DD.MM.YYYY hh:mm')
+                                    td= item.body
+                                tr
+                                    td(style="border:none!important", colspan=2)
+
 
 

@@ -32,9 +32,9 @@ var APP_ENV = process.env.APP_ENV || 'development';
 var config              = require('./config')[APP_ENV];
 
     global.ROOT_DIR     = __dirname + '/';
-    // global.CONNECTION   = mongoose.connection;
+    global.CONNECTION   = mongoose.connection;
     global.GRIDFS       = gridFs;
-    // gridFs.mongo = mongoose.mongo;
+    gridFs.mongo = mongoose.mongo;
 
 // parse application/json
 app.use(bodyParser.json());
@@ -51,7 +51,7 @@ app.use(bodyParser.text({ type: 'text/plain' }));
 app.use(cookieParser());
 
 // connect to our mongo DB database
-// mongoose.connect(config.mongo_url);
+mongoose.connect(config.mongo_url);
 
 app.use(cors());
 
@@ -70,7 +70,7 @@ if (APP_ENV === 'development') {
 }
 
 //start migrate
-// require('./app/migrations/appFirstStart');
+require('./app/migrations/appFirstStart');
 
 // routes for admin
 require('./app/routes/adminRoutes')(app, multer({ dest: 'tmp/admin/' }));
@@ -82,7 +82,7 @@ require('./app/routes/apiRoutes')(app, multer({ dest: 'tmp/api/' }));
 // route to handle all angular requests
 app.get('*', function(req, res) {
     res.render( path.resolve('public/views/errors/404.jade'), {
-        title           : "RICHSTONE: PAGE NOT FOUND"
+        title           : "HIFILM ADMIN: PAGE NOT FOUND"
     });
     res.end();
 });
@@ -110,7 +110,7 @@ app.listen(config.http_port, config.http_host);
 // shout out to the user
 console.log(' __________________________________________________________');
 console.log('|                                                          |');
-console.log('| << HiFilm admin >> started on port ' + config.http_port + '   |');
+console.log('| << HiFilm admin >> started on port ' + config.http_port + '                  |');
 console.log('|                                                          |');
 console.log(' ----------------------------------------------------------');
 

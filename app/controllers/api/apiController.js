@@ -9,6 +9,7 @@ var config                  = require('../../../config')[APP_ENV],
     emailHelper             = require('sendgrid').mail,
     fs                      = require('fs'),
     moment                  = require('moment');
+    Transaction             = require('../../models/Transaction');
 
 
 var API_Controller = function() {};
@@ -89,7 +90,15 @@ API_Controller.prototype.logApp       = function (request, response) {
     console.log("------log------");
     console.log(request.body);
     console.log("------log------");
-    ResponseUtils.send(response, { status: 'success' });
+
+    var _transaction        = new Transaction();
+    _transaction.body       = request.body.toString();
+
+    _transaction.save(function(err) {
+        console.log(err);
+        ResponseUtils.send(response, { status: 'success' });
+    });
+
 };
 
 

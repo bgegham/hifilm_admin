@@ -3,10 +3,10 @@ var config              = require('../../config')[APP_ENV],
     Schema              = mongoose.Schema;
 
 var transactionSchema = new Schema({
-    status : {
+    body : {
         type: String,
         index: true,
-        default:"danger"
+        default:""
     },
     created_at: {
         type: Date,
