@@ -10,7 +10,7 @@ module.exports = {
         http_host: '0.0.0.0'
     },
     production: {
-        baseUrl : "http://37.186.125.214:8080",
+        baseUrl : "https://dev.hifilmapp.com:8088/",
         secret: 'c6ddqf5047efc9s4e0d8ff9a87f4b5acb92abbqsdd26662ff2ddc74e33d1e24e0af7ssaa904825aq632e967418s98b1qffd06531s15637cdca372bff0004f035',
         mongo_url: 'mongodb://localhost/hifilm_transactions',
         SENDGRID_API_KEY : "",
