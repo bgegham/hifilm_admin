@@ -249,7 +249,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data/",
                         data: {
                             type : "card",
                             status : "success"
@@ -260,7 +260,7 @@
                     window.location.href = "inapp://errorCard";
                     $.ajax({
                         type: "POST",
-                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data/",
                         data: {
                             type : "card",
                             status : "error"
@@ -906,7 +906,7 @@
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                    url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
                     data: {
                         type : "card",
                         status : "inProgress"
