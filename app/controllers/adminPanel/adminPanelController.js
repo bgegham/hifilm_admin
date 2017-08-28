@@ -24,7 +24,7 @@ AdminPanelController.prototype.CREATE_SESSION   = function (request, response) {
         password        = request.body.password;
 
     Admin.findOne({ username: username }).exec( function (err, admin) {
-        console.log(err)
+        console.log(err);
         if (admin == null) {
             ResponseUtils.badRequest(response, errorMessage);
         } else {

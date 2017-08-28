@@ -91,8 +91,19 @@ API_Controller.prototype.logApp       = function (request, response) {
     console.log(request.body);
     console.log("------log------");
 
-    var _transaction        = new Transaction();
-    _transaction.body       = request.body.toString();
+    var _transaction                = new Transaction();
+        _transaction.user_id        = request.body.hfu;
+        _transaction.method         = request.body.method;
+        _transaction.status         = request.body.status;
+        _transaction.totalPrice     = request.body.totalPrice;
+        _transaction.email          = request.body.email;
+        _transaction.phone          = request.body.phone;
+        _transaction.address        = request.body.address;
+        _transaction.id_schedule    = request.body.id_schedule;
+        _transaction.date_time      = request.body.date_time;
+        _transaction.theatre_name   = request.body.theatre_name;
+        _transaction.movie_name     = request.body.movie_name;
+        _transaction.price          = request.body.price;
 
     _transaction.save(function(err) {
         console.log(err);

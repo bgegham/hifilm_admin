@@ -1,5 +1,19 @@
 (function() {
 
+    if(!getCookie("hfu")){
+        var randomUser = "_id_" + Math.random().toString(16).slice(2);
+        window.hifilm_user = randomUser;
+        document.cookie = "hfu="+randomUser+"; path=/;";
+    } else {
+        window.hifilm_user = getCookie("hfu");
+    }
+
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
     function getParameterByName(name) {
         name    = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex   = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -204,6 +218,24 @@
             setTimeout(function(){
 
                 if ((getParameterByName('AWS_RESPCODE') && getParameterByName('AWS_RESPCODE') === "00") || (getParameterByName('state') && getParameterByName('state') === "success")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
+                        data: {
+                            hfu : window.hifilm_user,
+                            method : "card",
+                            status : "success",
+                            totalPrice : "",
+                            email : "",
+                            phone : "",
+                            address : "",
+                            id_schedule : getParameterByName("id_schedule"),
+                            date_time : getParameterByName("date_time"),
+                            theatre_name : getParameterByName("theatre_name"),
+                            movie_name : getParameterByName("movie_name"),
+                            price : getParameterByName("price").replace(/[^-0-9]/gim,'')
+                        }
+                    });
                     window.location.href = "inapp://successCard";
                     $('#client').hide();
                     $('body').append("<div class='success-purchase-control' style='padding-top: 30px;'>" +
@@ -247,25 +279,27 @@
                         "</div>"
                     );
 
-                    $.ajax({
-                        type: "POST",
-                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data/",
-                        data: {
-                            type : "card",
-                            status : "success"
-                        }
-                    });
-
                 } else if ((getParameterByName('AWS_RESPCODE') && getParameterByName('AWS_RESPCODE') !== "00") || (getParameterByName('state') && getParameterByName('state') === "cancel")) {
-                    window.location.href = "inapp://errorCard";
                     $.ajax({
                         type: "POST",
-                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data/",
+                        url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
                         data: {
-                            type : "card",
-                            status : "error"
+                            hfu : window.hifilm_user,
+                            method : "card",
+                            status : "error",
+                            totalPrice : "",
+                            email : "",
+                            phone : "",
+                            address : "",
+                            id_schedule : getParameterByName("id_schedule"),
+                            date_time : getParameterByName("date_time"),
+                            theatre_name : getParameterByName("theatre_name"),
+                            movie_name : getParameterByName("movie_name"),
+                            price : getParameterByName("price").replace(/[^-0-9]/gim,'')
                         }
                     });
+                    window.location.href = "inapp://errorCard";
+
                     $('#client').hide();
                     $('body').append("<div class='error-purchase-control'>" +
                         "<h1 style='letter-spacing: 1px;margin-top: 40px;'>" +
@@ -304,15 +338,26 @@
                 }
 
                 if(getParameterByName('cod') && getParameterByName('cod') == "1"){
-                    window.location.href = "inapp://successDelivery";
+
                     $.ajax({
                         type: "POST",
-                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
                         data: {
-                            type : "delivery",
-                            status : "success"
+                            hfu : window.hifilm_user,
+                            method : "delivery",
+                            status : "success",
+                            totalPrice : "",
+                            email : "",
+                            phone : "",
+                            address : "",
+                            id_schedule : getParameterByName("id_schedule"),
+                            date_time : getParameterByName("date_time"),
+                            theatre_name : getParameterByName("theatre_name"),
+                            movie_name : getParameterByName("movie_name"),
+                            price : getParameterByName("price").replace(/[^-0-9]/gim,'')
                         }
                     });
+                    window.location.href = "inapp://successDelivery";
                     $('#client').hide();
                     $('body').append("<div class='success-purchase-control'>" +
                         "<h1 style='letter-spacing: 1px;'>" +
@@ -334,15 +379,26 @@
                     );
 
                 } else if(getParameterByName('cod') && getParameterByName('cod') == "error" ){
-                    window.location.href = "inapp://errorDelivery";
                     $.ajax({
                         type: "POST",
-                        url: "https://dev.hifilmapp.com:8088/api/1.0/hifilm/log/data",
+                        url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
                         data: {
-                            type : "delivery",
-                            status : "error"
+                            hfu : window.hifilm_user,
+                            method : "delivery",
+                            status : "error",
+                            totalPrice : "",
+                            email : "",
+                            phone : "",
+                            address : "",
+                            id_schedule : getParameterByName("id_schedule"),
+                            date_time : getParameterByName("date_time"),
+                            theatre_name : getParameterByName("theatre_name"),
+                            movie_name : getParameterByName("movie_name"),
+                            price : getParameterByName("price").replace(/[^-0-9]/gim,'')
                         }
                     });
+                    window.location.href = "inapp://errorDelivery";
+
                     $('#client').hide();
                     $('body').append("<div class='error-purchase-control'>" +
                         "<h1 style='letter-spacing: 1px;'>" +
@@ -613,8 +669,6 @@
                         "</p>").insertBefore("#cash_form");
                 }
             }
-
-
 
             // remove default zoom buttons
             // $('#in_zoom').removeClass();
@@ -904,12 +958,56 @@
 
             $("#visa").on("submit", function(e){
                 e.preventDefault();
+                var totalPrice = $(".totalPriceLast").html();
+                var _mail = $("#email").val();
+                // id_schedule
+                // date_time
+                // theatre_name
+                // movie_name
+                // price
+                // lang
                 $.ajax({
                     type: "POST",
                     url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
                     data: {
-                        type : "card",
-                        status : "inProgress"
+                        hfu : window.hifilm_user,
+                        method : "card",
+                        status : "inProgress",
+                        totalPrice : totalPrice.replace(/[^-0-9]/gim,''),
+                        email : _mail,
+                        phone : "",
+                        address : "",
+                        id_schedule : getParameterByName("id_schedule"),
+                        date_time : getParameterByName("date_time"),
+                        theatre_name : getParameterByName("theatre_name"),
+                        movie_name : getParameterByName("movie_name"),
+                        price : getParameterByName("price").replace(/[^-0-9]/gim,'')
+                    }
+                });
+            });
+
+            $("#cash_form").on("submit", function(e){
+                e.preventDefault();
+                var totalPrice = $(".totalPriceLastPPD").html();
+                var _phone = $("#phone").val();
+                var _address = $("#address").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/",
+                    data: {
+                        hfu : window.hifilm_user,
+                        method : "delivery",
+                        status : "inProgress",
+                        totalPrice : totalPrice.replace(/[^-0-9]/gim,''),
+                        email : "",
+                        phone : _phone,
+                        address : _address,
+                        id_schedule : getParameterByName("id_schedule"),
+                        date_time : getParameterByName("date_time"),
+                        theatre_name : getParameterByName("theatre_name"),
+                        movie_name : getParameterByName("movie_name"),
+                        price : getParameterByName("price").replace(/[^-0-9]/gim,'')
                     }
                 });
             });

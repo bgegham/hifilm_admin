@@ -366,6 +366,14 @@
 
 <script>
     (function() {
+        if(!getCookie("hfu")){
+            var randomUser = "_id_" + Math.random().toString(16).slice(2);
+            window.hifilm_user = randomUser;
+            document.cookie = "hfu="+randomUser+"; path=/;";
+        } else {
+            window.hifilm_user = getCookie("hfu");
+        }
+        // id_schedule
         // date_time
         // theatre_name
         // movie_name
@@ -483,9 +491,18 @@
                     _xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 data_for_send = {
-                    type : "call",
-                    status : "unknown",
-                    body : data
+                    hfu : window.hifilm_user,
+                    method : "call",
+                    status : "try_call",
+                    totalPrice : "",
+                    email : "",
+                    phone : "",
+                    address : "",
+                    id_schedule : getParameterByName("id_schedule"),
+                    date_time : getParameterByName("date_time"),
+                    theatre_name : getParameterByName("theatre_name"),
+                    movie_name : getParameterByName("movie_name"),
+                    price : getParameterByName("price").replace(/[^-0-9]/gim,'')
                 };
 
                 _xhr.open('POST', "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/", true);
