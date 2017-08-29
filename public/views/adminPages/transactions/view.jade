@@ -64,78 +64,32 @@ block content
                                 th Address
                                 th Created at
                         tbody
-                            tr
-                                td 564
-                                td Card
-                                td.text-center
-                                    span(class='badge st_inProgress') InProgress
-                                td.text-right
-                                    |  1000 AMD
-                                td.text-right
-                                    b
-                                        |   3000 AMD
-                                td 2316547
-                                td 2017-08-29 10:10:00
-                                td BABY DRIVER
-                                td KINO PARK
-                                td b.asd@.asd
-                                td
-                                td
-                                td 2017-08-29 10:10:00
-                            tr
-                                td 564
-                                td Card
-                                td
-                                    span(class='badge st_success') InProgress
-                                td.text-right
-                                    |  1000 AMD
-                                td.text-right
-                                    b
-                                        |   3000 AMD
-                                td 2316547
-                                td 2017-08-29 10:10:00
-                                td BABY DRIVER
-                                td KINO PARK
-                                td b.asd@.asd
-                                td
-                                td
-                                td 2017-08-29 10:10:00
-                            tr
-                                td 564
-                                td Card
-                                td
-                                    span(class='badge st_error') InProgress
-                                td.text-right
-                                    |  1000 AMD
-                                td.text-right
-                                    b
-                                        |   3000 AMD
-                                td 2316547
-                                td 2017-08-29 10:10:00
-                                td BABY DRIVER
-                                td KINO PARK
-                                td b.asd@.asd
-                                td
-                                td
-                                td 2017-08-29 10:10:00
-                            tr
-                                td 564
-                                td Card
-                                td
-                                    span(class='badge st_InProgress') InProgress
-                                td.text-right
-                                    |  1500 AMD
-                                td.text-right
-                                    b
-                                        |   4500 AMD
-                                td 2316547
-                                td 2017-08-29 10:10:00
-                                td BABY DRIVER
-                                td KINO PARK
-                                td b.asd@.asd
-                                td
-                                td
-                                td 2017-08-29 10:10:00
+                            if(data && data.length)
+                                each item in data
+                                    tr
+                                        td=item.user_id
+                                        td=item.method
+                                        td
+                                            span(calss='st_' + item.status)= item.status
+                                        td.text-right
+                                            #{item.price}
+                                            |   AMD
+                                        td.text-right
+                                            b
+                                                #{item.totalPrice}
+                                                |   AMD
+                                        td=item.id_schedule
+                                        td=item.date_time
+                                        td=item.movie_name
+                                        td=item.theatre_name
+                                        td=item.movie_name
+                                        td
+                                            a(href="mailto:" + item.email)= item.email
+                                        td=item.phone
+                                        td=item.address
+                                        td= moment(item.created_at).format('DD.MM.YYYY hh:mm')
+
+
 
 
 
