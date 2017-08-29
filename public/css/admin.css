@@ -153,3 +153,49 @@ th {
     border-right: solid 1px #d2d6de;
     border-bottom: solid 1px #d2d6de;
 }
+.huge{
+    font-size: 34px;
+}
+.fa-8x{
+    font-size: 80px;
+}
+#dataTable_filter > label{
+    float: left;
+}
+#dataTable{
+    margin-top: 25px!important;
+}
+
+#dataTable > thead > tr > th{
+    border: 1px solid #51636b !important;
+    border-left-width: 0 !important;
+}
+#dataTable > thead > tr > th:first-child{
+    border: 1px solid #51636b !important;
+}
+#dataTable > tbody > tr > td{
+    border: 1px solid #6e868e !important;
+    border-left-width: 0 !important;
+}
+#dataTable > tbody > tr > td:first-child{
+    border: 1px solid #6e868e !important;
+}
+
+#dataTable > tbody > tr:hover{
+    background-color: #ffffff;
+}
+span.badge{
+    border-radius: 3px;
+}
+span.badge.st_inProgress{
+    background: #777;
+}
+span.badge.st_success{
+    background: #169f1a;
+}
+span.badge.st_error{
+    background: #940d31;
+}
+span.badge.st_try_call{
+ background: #beb346;
+}

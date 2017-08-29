@@ -1,5 +1,5 @@
 {
-  "name": "maeutica-brands-and-business-conference",
+  "name": "hifilm_admin",
   "description": "",
   "main": "",
   "moduleType": [],
@@ -16,6 +16,11 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
+    "jquery-ui": "^1.11.4",
+    "datatables": "~1.10.10",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
+    "datatables.net-buttons-bs": "^1.2.1",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.3.0",
     "moment": "^2.13.0"
