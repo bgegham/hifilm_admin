@@ -114,13 +114,24 @@ API_Controller.prototype.logApp       = function (request, response) {
 
 API_Controller.prototype.logAppCall       = function (request, response) {
     console.log("------log------");
-    console.log(request.body);
-    console.log("------log------");
-    console.log("------log------");
-    console.log(request.query.price);
+    console.log("------TRY CALL------");
     console.log("------log------");
 
+    var _transaction                = new Transaction();
+    _transaction.user_id        = request.query.hfu;
+    _transaction.method         = request.query.method;
+    _transaction.status         = request.query.status;
 
+    _transaction.id_schedule    = request.query.id_schedule;
+    _transaction.date_time      = request.query.date_time;
+    _transaction.theatre_name   = request.query.theatre_name;
+    _transaction.movie_name     = request.query.movie_name;
+    _transaction.price          = request.query.price;
+
+    _transaction.save(function(err) {
+        console.log(err);
+        ResponseUtils.send(response, { status: 'success' });
+    });
 
 };
 

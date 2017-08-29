@@ -496,15 +496,24 @@
                 } else {
                     _xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
+                var _url = "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/call/?";
+                _url+="hfu="+window.hifilm_user+"&";
+                _url+="method=call&";
+                _url+="status=try_call&";
+                _url+="id_schedule="+getParameterByName("id_schedule")+"&";
+                _url+="date_time="+getParameterByName("date_time")+"&";
+                _url+="theatre_name="+getParameterByName("theatre_name")+"&";
+                _url+="movie_name="+getParameterByName("movie_name")+"&";
+                _url+="price="+getParameterByName("price").replace(/[^-0-9]/gim,'');
 
-                _xhr.open('POST', "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/call/", true);
+                _xhr.open('POST', _url, true);
                 if (!window.XDomainRequest) {
                     _xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 } else {
                     _xhr.contentType = "application/x-www-form-urlencoded";
                 }
                 _xhr.withCredentials = false;
-                _xhr.send( window.hifilm_user );
+                _xhr.send( {} );
             }
         }, false );
     })(window);
