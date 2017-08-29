@@ -117,7 +117,7 @@ API_Controller.prototype.logAppCall       = function (request, response) {
     console.log(request.body);
     console.log("------log------");
     console.log("------log------");
-    console.log(Object.keys(request.body));
+    console.log(Object.keys(request.body)[0]);
     console.log("------log------");
 
 
