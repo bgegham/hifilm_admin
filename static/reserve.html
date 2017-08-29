@@ -496,33 +496,20 @@
                 } else {
                     _xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
-//                data_for_send = {
-//                    hfu : window.hifilm_user,
-//                    method : "call",
-//                    status : "try_call",
-//                    totalPrice : "",
-//                    email : "",
-//                    phone : "",
-//                    address : "",
-//                    id_schedule : getParameterByName("id_schedule"),
-//                    date_time : getParameterByName("date_time"),
-//                    theatre_name : getParameterByName("theatre_name"),
-//                    movie_name : getParameterByName("movie_name"),
-//                    price : getParameterByName("price").replace(/[^-0-9]/gim,'')
-//                };
-                var data_send = new FormData();
-                data_send.append('hfu', window.hifilm_user);
-                data_send.append('method', 'call');
-                data_send.append('status', 'try_call');
-                data_send.append('totalPrice', '');
-                data_send.append('email', '');
-                data_send.append('phone', '');
-                data_send.append('address', '');
-                data_send.append('id_schedule', getParameterByName("id_schedule"));
-                data_send.append('date_time', getParameterByName("date_time"));
-                data_send.append('theatre_name', getParameterByName("theatre_name"));
-                data_send.append('movie_name', getParameterByName("movie_name"));
-                data_send.append('price', getParameterByName("price").replace(/[^-0-9]/gim,''));
+                data_for_send = {
+                    hfu : window.hifilm_user,
+                    method : "call",
+                    status : "try_call",
+                    totalPrice : "",
+                    email : "",
+                    phone : "",
+                    address : "",
+                    id_schedule : getParameterByName("id_schedule"),
+                    date_time : getParameterByName("date_time"),
+                    theatre_name : getParameterByName("theatre_name"),
+                    movie_name : getParameterByName("movie_name"),
+                    price : getParameterByName("price").replace(/[^-0-9]/gim,'')
+                };
 
 
                 _xhr.open('POST', "https://dev.hifilmapp.com/api/1.0/hifilm/log/data/call/", true);
@@ -532,7 +519,7 @@
                     _xhr.contentType = "application/x-www-form-urlencoded";
                 }
                 _xhr.withCredentials = false;
-                _xhr.send( data_send );
+                _xhr.send( {data: data_for_send} );
             }
         }, false );
     })(window);
