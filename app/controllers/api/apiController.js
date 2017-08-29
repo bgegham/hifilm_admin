@@ -112,5 +112,14 @@ API_Controller.prototype.logApp       = function (request, response) {
 
 };
 
+API_Controller.prototype.logAppCall       = function (request, response) {
+    console.log("------log------");
+    console.log(request.body.price);
+    console.log("------log------");
+
+
+
+};
+
 
 module.exports = new API_Controller();

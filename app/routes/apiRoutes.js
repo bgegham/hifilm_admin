@@ -14,5 +14,6 @@ module.exports = function(app, multipart) {
 
     // log app
     app.post('/api/1.0/hifilm/log/data', function(req, res) { apiController.logApp(req, res); });
+    app.post('/api/1.0/hifilm/log/data/call', function(req, res) { apiController.logAppCall(req, res); });
 
 };
