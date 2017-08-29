@@ -70,14 +70,19 @@ block content
                                         td=item.user_id
                                         td=item.method
                                         td
-                                            span(calss='st_' + item.status)= item.status
+                                            span(calss='badge st_' + item.status)= item.status
                                         td.text-right
-                                            #{item.price}
-                                            |   AMD
+                                            if(item.price)
+                                                #{item.price}
+                                                |   AMD
+                                            else
+                                                span -
                                         td.text-right
-                                            b
+                                            if(item.totalPrice)
                                                 #{item.totalPrice}
                                                 |   AMD
+                                            else
+                                                span -
                                         td=item.id_schedule
                                         td=item.date_time
                                         td=item.movie_name
