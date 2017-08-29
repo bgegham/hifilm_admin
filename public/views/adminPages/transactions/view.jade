@@ -73,7 +73,7 @@ block content
                                             span(class='badge st_' + item.status)= item.status
                                         td.text-right
                                             if(item.price)
-                                                item.price
+                                                |   #{item.price}
                                                 |   AMD
                                             else
                                                 span -
