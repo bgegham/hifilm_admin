@@ -116,7 +116,9 @@ API_Controller.prototype.logAppCall       = function (request, response) {
     console.log("------log------");
     console.log(request.body);
     console.log("------log------");
-
+    console.log("------log------");
+    console.log(request.query.price);
+    console.log("------log------");
 
 
 
