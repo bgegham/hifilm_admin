@@ -366,6 +366,12 @@
 
 <script>
     (function() {
+        function getCookie(name) {
+            var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
         if(!getCookie("hfu")){
             var randomUser = "_id_" + Math.random().toString(16).slice(2);
             window.hifilm_user = randomUser;
@@ -511,7 +517,7 @@
                 } else {
                     _xhr.contentType = "application/x-www-form-urlencoded";
                 }
-                _xhr.withCredentials = true;
+                _xhr.withCredentials = false;
                 _xhr.send( JSON.stringify(data_for_send) );
             }
         }, false );
